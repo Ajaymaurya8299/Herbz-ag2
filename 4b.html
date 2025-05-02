@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgriApp Menu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #e0f7fa;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .app-header {
+      background-color: #0288d1;
+      color: white;
+      padding: 25px 10px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .app-button {
+      width: 80%;
+      max-width: 300px;
+      margin: 15px;
+      padding: 18px;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .app-button:hover {
+      background-color: #0097a7;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+    }
+
+    .app-button:active {
+      background-color: #00796b;
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-header"> </div>
+
+  <div class="container">
+    <button class="app-button" onclick="location.href=''">Test</button>
+    <button class="app-button" onclick="location.href='syllabus.html'">Syllabus</button>
+    <button class="app-button" onclick="location.href=''">Paper</button>
+    <button class="app-button" onclick="location.href='#'">Other</button>
+  </div>
+
+</body>
+</html>
