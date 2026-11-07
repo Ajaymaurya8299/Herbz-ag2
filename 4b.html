@@ -5,747 +5,348 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SAFALTA COACHING CENTER - Physics Test</title>
-
 <style>
 *{box-sizing:border-box}
-
 body{
- margin:0;
- padding:15px;
- min-height:100vh;
- font-family:Arial,"Noto Sans Devanagari",sans-serif;
- background:radial-gradient(circle at top,#174d85,#07152e 65%);
- color:white;
+  margin:0;padding:15px;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:#eef3fa;color:#172033
 }
-
-.container{max-width:650px;margin:auto}
-
-.coaching-header{
- text-align:center;
- padding:20px 10px;
- border:2px solid #35d8ff;
- border-radius:20px;
- background:linear-gradient(120deg,#102c58,#07152e);
- box-shadow:0 0 20px #12aaff66;
- margin-bottom:18px;
+.container{
+  max-width:750px;margin:20px auto;
+  background:white;padding:22px;
+  border-radius:15px;box-shadow:0 4px 18px #0002
 }
-
-.logo{font-size:42px}
-
-.coaching-header h1{
- margin:5px 0;
- color:#ffd76a;
- font-size:25px;
+header{text-align:center;border-bottom:2px solid #174ea6;padding-bottom:15px}
+header h1{color:#174ea6;font-size:27px;margin:5px}
+header p{margin:5px;font-size:14px}
+h2{text-align:center;color:#174ea6}
+.info{
+  background:#edf4ff;padding:12px;border-radius:9px;
+  text-align:center;line-height:1.8;margin:18px 0
 }
-
-.coaching-header p{
- margin:8px 0 0;
- color:#c4ddff;
- font-size:13px;
- line-height:1.6;
+input{
+  width:100%;padding:13px;font-size:17px;
+  border:1px solid #aaa;border-radius:8px;margin:10px 0
 }
-
-.panel{
- background:linear-gradient(145deg,#102d55,#07172f);
- border:1px solid #398bd6;
- border-radius:22px;
- padding:22px;
- margin-bottom:15px;
- box-shadow:0 10px 30px #0005;
-}
-
-.center{text-align:center}
-
-.physics-art{
- margin:15px auto;
- padding:12px;
- background:linear-gradient(120deg,#092344,#174b78);
- border:1px solid #39caff;
- border-radius:18px;
-}
-
-.physics-art svg{
- width:100%;
- max-height:150px;
-}
-
-h2{color:#65ddff}
-
-.test-title{
- font-size:27px;
- color:white;
- text-shadow:0 0 15px #36bfff;
-}
-
-.gold{color:#ffd66c}
-
-.stats{
- display:flex;
- justify-content:space-around;
- gap:8px;
- margin:20px 0;
- flex-wrap:wrap;
-}
-
-.stat{
- flex:1;
- min-width:90px;
- padding:12px 5px;
- border:1px solid #36bfff;
- border-radius:12px;
- background:#0b2345;
-}
-
-.stat strong{
- display:block;
- font-size:21px;
- color:#ffe17b;
-}
-
-.stat small{color:#c7dcf8}
-
 button{
- border:0;
- border-radius:12px;
- padding:14px 20px;
- font-size:17px;
- font-weight:bold;
- cursor:pointer;
+  border:0;background:#174ea6;color:white;
+  padding:13px 22px;border-radius:8px;
+  font-size:17px;cursor:pointer
 }
-
-.main{
- width:100%;
- color:white;
- background:linear-gradient(90deg,#00a95c,#00dc80);
- box-shadow:0 0 20px #00e78a66;
- margin-top:15px;
+button:disabled{background:#aaa}
+.center{text-align:center}
+#quiz,#result{display:none}
+.top{
+  display:flex;justify-content:space-between;
+  gap:10px;flex-wrap:wrap;font-weight:bold;margin:15px 0
 }
-
-.option{
- display:block;
- width:100%;
- text-align:left;
- margin:10px 0;
- padding:14px;
- color:white;
- background:#17385e;
- border:1px solid #3976ad;
- border-radius:12px;
- font-size:16px;
-}
-
-.option:disabled{
- cursor:not-allowed;
- opacity:1;
-}
-
-.option.correct{
- background:#087c49;
- border-color:#31f69b;
-}
-
-.option.wrong{
- background:#a42b3b;
- border-color:#ff7381;
-}
-
-.topline{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:10px;
- flex-wrap:wrap;
-}
-
-.timer{
- color:#ffe27a;
- font-size:21px;
- font-weight:bold;
-}
-
+.timer{color:#d62828}
 .progress{
- height:9px;
- background:#263e5d;
- border-radius:20px;
- overflow:hidden;
- margin:15px 0;
+  height:9px;background:#ddd;border-radius:10px;overflow:hidden
 }
-
-#progressBar{
- height:100%;
- width:0;
- background:#29dcff;
- transition:width .2s;
-}
-
+#bar{height:100%;width:0;background:#16834a}
 .question{
- font-size:20px;
- line-height:1.6;
+  font-size:20px;font-weight:bold;
+  margin:22px 0;line-height:1.6
 }
-
-.muted{
- color:#b8cee9;
- line-height:1.7;
+.option{
+  display:block;width:100%;text-align:left;
+  background:#f3f6fb;color:#172033;
+  border:1px solid #cbd5e1;margin:10px 0;
+  padding:14px;border-radius:9px;font-size:17px
 }
-
-.hidden{display:none}
-
-.result-number{
- font-size:42px;
- color:#ffe17b;
- font-weight:bold;
+.option:hover{background:#e1ecff}
+.option:disabled{opacity:1}
+.option.selected{background:#d8e8ff;border:2px solid #174ea6}
+.resultbox{
+  background:#edf4ff;padding:15px;
+  border-radius:10px;line-height:2;margin:15px 0
 }
-
-.review-item{
- padding:13px;
- margin:12px 0;
- border-radius:12px;
- background:#102c50;
- border-left:4px solid #43cfff;
- line-height:1.7;
+.review{
+  border-bottom:1px solid #ddd;padding:12px 0;
+  line-height:1.7
 }
-
-.good{color:#5cffad}
-.bad{color:#ff8290}
-
-#result h2{color:#ffd66c}
+.correct{color:green;font-weight:bold}
+.wrong{color:#d62828;font-weight:bold}
+.small{font-size:13px;color:#555}
 </style>
 </head>
-
 <body>
 
 <div class="container">
 
-<!-- COACHING HEADER -->
-<header class="coaching-header">
- <div class="logo">🎓</div>
- <h1>SAFALTA COACHING CENTER</h1>
- <p>Saranga Imalipur Sonbhadra Uttar Pradesh 231210</p>
+<header>
+<h1>SAFALTA COACHING CENTER</h1>
+<p>Saranga Imalipur Sonbhadra Uttar Pradesh 231210</p>
 </header>
 
-<!-- START SCREEN -->
-<section class="panel center" id="welcome">
-
- <div class="physics-art">
-  <svg viewBox="0 0 340 150">
-   <defs>
-    <linearGradient id="beam">
-     <stop stop-color="#fff47a"/>
-     <stop offset="1" stop-color="#35cfff"/>
-    </linearGradient>
-   </defs>
-
-   <path d="M15 25 L170 75 L320 25"
-    fill="none" stroke="url(#beam)" stroke-width="5"/>
-
-   <path d="M15 25 L170 75 L320 130"
-    fill="none" stroke="#ffd76b" stroke-width="4"/>
-
-   <path d="M170 10 Q235 75 170 140"
-    fill="none" stroke="#43dfff" stroke-width="7"/>
-
-   <circle cx="170" cy="75" r="6" fill="white"/>
-
-   <text x="170" y="148" text-anchor="middle"
-    fill="white" font-size="11">
-    REFLECTION OF LIGHT
-   </text>
-  </svg>
- </div>
-
- <h2>विषय : भौतिक विज्ञान</h2>
-
- <div class="test-title">प्रकाश का परावर्तन</div>
-
- <h2 class="gold">MCQ UNIT TEST</h2>
-
- <div class="result-number">50 अंक</div>
-
- <div class="stats">
-  <div class="stat">
-   <small>कुल प्रश्न</small>
-   <strong>50</strong>
-  </div>
-
-  <div class="stat">
-   <small>प्रति प्रश्न</small>
-   <strong>10 सेकंड</strong>
-  </div>
-
-  <div class="stat">
-   <small>कुल अंक</small>
-   <strong>50</strong>
-  </div>
- </div>
-
- <button class="main" onclick="startQuiz()">
-  🚀 टेस्ट शुरू करें
- </button>
-
+<section id="start">
+<h2>भौतिक विज्ञान</h2>
+<div class="info">
+  <b>अध्याय:</b> प्रकाश का परावर्तन<br>
+  <b>UNIT TEST</b><br>
+  कुल प्रश्न: 50 | कुल अंक: 50<br>
+  प्रत्येक प्रश्न के लिए समय: 10 सेकंड
+</div>
+<label><b>विद्यार्थी का नाम लिखें:</b></label>
+<input id="studentName" type="text" placeholder="अपना पूरा नाम लिखें">
+<div class="center">
+<button onclick="startQuiz()">टेस्ट शुरू करें</button>
+</div>
+<p class="small center">नाम लिखकर टेस्ट शुरू करें। प्रत्येक प्रश्न का उत्तर देने के बाद अगला प्रश्न अपने आप खुलेगा।</p>
 </section>
 
-<!-- QUIZ SCREEN -->
-<section class="panel hidden" id="quiz">
-
- <div class="topline">
-  <strong id="questionNumber">प्रश्न 1 / 50</strong>
-
-  <div class="timer">
-   ⏱️ <span id="time">10</span> सेकंड
-  </div>
- </div>
-
- <div class="progress">
-  <div id="progressBar"></div>
- </div>
-
- <h3 class="question" id="questionText"></h3>
-
- <div id="options"></div>
-
- <p class="muted" id="message">
-  एक सही विकल्प चुनें।
-  उत्तर चुनने के बाद अगला प्रश्न खुलेगा।
- </p>
-
+<section id="quiz">
+<div class="top">
+<span id="number">प्रश्न 1/50</span>
+<span class="timer">समय: <span id="time">10</span> सेकंड</span>
+</div>
+<div class="progress"><div id="bar"></div></div>
+<div id="question" class="question"></div>
+<div id="options"></div>
+<p class="small center">उत्तर चुनने के बाद वापस नहीं जा सकेंगे।</p>
 </section>
 
-<!-- RESULT SCREEN -->
-<section class="panel center hidden" id="result">
-
- <h1>🎉 CONGRATULATIONS! 🎉</h1>
-
- <h2>आपका टेस्ट पूरा हुआ</h2>
-
- <p class="muted">
-  SAFALTA COACHING CENTER - भौतिक विज्ञान
- </p>
-
- <div class="result-number">
-  <span id="score">0</span> / 50
- </div>
-
- <h3 id="feedback"></h3>
-
- <div class="stats">
-
-  <div class="stat">
-   <small>सही उत्तर</small>
-   <strong id="correct">0</strong>
-  </div>
-
-  <div class="stat">
-   <small>गलत उत्तर</small>
-   <strong id="wrong">0</strong>
-  </div>
-
-  <div class="stat">
-   <small>छोड़े गए</small>
-   <strong id="skipped">0</strong>
-  </div>
-
- </div>
-
- <h2>
-  प्रतिशत : <span id="percentage">0</span>%
- </h2>
-
- <button class="main" onclick="showReview()">
-  📖 उत्तर देखें
- </button>
-
- <button class="main" onclick="location.reload()">
-  🔄 दोबारा टेस्ट दें
- </button>
-
-</section>
-
-<!-- ANSWER REVIEW -->
-<section class="panel hidden" id="review">
-
- <h2 class="center">उत्तर रिव्यू</h2>
-
- <div id="reviewList"></div>
-
- <button class="main" onclick="location.reload()">
-  दोबारा टेस्ट दें
- </button>
-
+<section id="result">
+<h2>आपका परिणाम</h2>
+<div class="center">
+  <h3 id="studentResult"></h3>
+</div>
+<div class="resultbox" id="summary"></div>
+<h3>उत्तर की जाँच</h3>
+<div id="review"></div>
+<div class="center">
+<button onclick="location.reload()">दोबारा टेस्ट दें</button>
+</div>
+<p id="saveStatus" class="center small">रिजल्ट Google Sheet में भेजा जा रहा है...</p>
 </section>
 
 </div>
 
 <script>
+const GOOGLE_SHEET_URL =
+"https://script.google.com/macros/s/AKfycbyKSLPaqnf93qEXPiusia0oV-M9zhgJhNdOrhCgFGbViczdH2bzl0esyJ_NvBV9wY5-5w/exec";
 
+// प्रत्येक प्रश्न: प्रश्न, चार विकल्प, सही विकल्प का क्रमांक
 const questions = [
-
-["प्रकाश के परावर्तन में प्रकाश किस माध्यम में वापस लौटता है?",
-["दूसरे माध्यम में","निर्वात में","उसी माध्यम में","किसी भी माध्यम में"],2],
-
-["परावर्तन के कितने मुख्य नियम होते हैं?",
-["एक","दो","तीन","चार"],1],
-
-["आपतन कोण किसके बीच मापा जाता है?",
-["परावर्तित किरण और दर्पण","दर्पण और अभिलंब","आपतित किरण और अभिलंब","दोनों किरणों के बीच"],2],
-
-["परावर्तन कोण किसके बीच मापा जाता है?",
-["परावर्तित किरण और अभिलंब","आपतित किरण और दर्पण","दर्पण और अभिलंब","आपतित किरण और दर्पण का तल"],0],
-
-["परावर्तन का पहला नियम क्या है?",
-["आपतन कोण बड़ा होता है","आपतन कोण परावर्तन कोण के बराबर होता है","दोनों कोण शून्य होते हैं","कोई नियम नहीं"],1],
-
-["आपतित किरण, परावर्तित किरण और अभिलंब होते हैं?",
-["अलग-अलग तल में","एक ही तल में","समानांतर","लंबवत"],1],
-
-["समतल दर्पण में प्रतिबिंब कैसा बनता है?",
-["वास्तविक","उल्टा","आभासी और सीधा","छोटा"],2],
-
-["समतल दर्पण में प्रतिबिंब का आकार होता है?",
-["वस्तु के बराबर","बड़ा","छोटा","शून्य"],0],
-
-["समतल दर्पण में प्रतिबिंब की दूरी होती है?",
-["वस्तु से दोगुनी","वस्तु से आधी","वस्तु की दूरी के बराबर","शून्य"],2],
-
-["समतल दर्पण में कौन-सा परिवर्तन होता है?",
-["ऊपर-नीचे","दाएँ-बाएँ","आकार","रंग"],1],
-
-["गोलीय दर्पण कितने प्रकार के होते हैं?",
-["एक","दो","तीन","चार"],1],
-
-["अवतल दर्पण का परावर्तक पृष्ठ होता है?",
-["बाहरी","भीतरी","समतल","दोनों"],1],
-
-["उत्तल दर्पण का परावर्तक पृष्ठ होता है?",
-["भीतरी","बाहरी","समतल","कोई नहीं"],1],
-
-["वाहनों में पीछे देखने के लिए कौन-सा दर्पण प्रयोग होता है?",
-["अवतल","समतल","उत्तल","बेलनाकार"],2],
-
-["दाढ़ी बनाने के लिए कौन-सा दर्पण उपयोगी है?",
-["उत्तल","अवतल","समतल","कोई नहीं"],1],
-
-["अवतल दर्पण का मुख्य फोकस कैसा होता है?",
-["वास्तविक","आभासी","अनंत","कोई नहीं"],0],
-
-["उत्तल दर्पण का मुख्य फोकस कैसा होता है?",
-["वास्तविक","आभासी","शून्य","अनंत"],1],
-
-["दर्पण सूत्र क्या है?",
-["1/f = 1/v + 1/u","f = u + v","f = uv","1/u = f + v"],0],
-
-["आवर्धन का सूत्र क्या है?",
-["m = u/v","m = -v/u","m = u+v","m = f/u"],1],
-
-["अवतल दर्पण के सामने वस्तु वक्रता केंद्र पर हो तो प्रतिबिंब कहाँ बनेगा?",
-["फोकस पर","वक्रता केंद्र पर","अनंत पर","दर्पण के पीछे"],1],
-
-["वक्रता त्रिज्या और फोकस दूरी में संबंध है?",
-["R=f","R=2f","R=f/2","R=4f"],1],
-
-["उत्तल दर्पण में प्रतिबिंब हमेशा कैसा बनता है?",
-["वास्तविक और उल्टा","आभासी और सीधा","वास्तविक और सीधा","उल्टा और बड़ा"],1],
-
-["अवतल दर्पण में वस्तु अनंत पर हो तो प्रतिबिंब कहाँ बनता है?",
-["फोकस पर","वक्रता केंद्र पर","अनंत पर","दर्पण के पीछे"],0],
-
-["अवतल दर्पण में वस्तु फोकस पर हो तो प्रतिबिंब कहाँ बनता है?",
-["फोकस पर","वक्रता केंद्र पर","अनंत पर","दर्पण के पीछे"],2],
-
-["अवतल दर्पण में वस्तु ध्रुव और फोकस के बीच हो तो प्रतिबिंब कैसा होता है?",
-["वास्तविक और उल्टा","आभासी और सीधा","वास्तविक और छोटा","उल्टा और छोटा"],1],
-
-["दर्पण की फोकस दूरी किसकी आधी होती है?",
-["व्यास","वक्रता त्रिज्या","ऊँचाई","चौड़ाई"],1],
-
-["प्रकाश की चाल निर्वात में लगभग कितनी होती है?",
-["3×10⁶ m/s","3×10⁸ m/s","3×10⁵ m/s","3×10⁷ m/s"],1],
-
-["प्रकाश का परावर्तन किस कारण होता है?",
-["प्रकाश का वापस लौटना","प्रकाश का रुकना","प्रकाश का मुड़ना","प्रकाश का टूटना"],0],
-
-["किस दर्पण में बड़ा प्रतिबिंब प्राप्त किया जा सकता है?",
-["उत्तल","अवतल","समतल","सभी"],1],
-
-["सौर भट्ठी में कौन-सा दर्पण प्रयोग होता है?",
-["समतल","उत्तल","अवतल","कोई नहीं"],2],
-
-["टॉर्च के परावर्तक में कौन-सा दर्पण होता है?",
-["अवतल","उत्तल","समतल","कोई नहीं"],0],
-
-["उत्तल दर्पण का दृष्टि क्षेत्र कैसा होता है?",
-["कम","अधिक","शून्य","समान"],1],
-
-["समतल दर्पण का आवर्धन कितना होता है?",
-["+1","-1","0","2"],0],
-
-["वास्तविक प्रतिबिंब को पर्दे पर प्राप्त किया जा सकता है?",
-["हाँ","नहीं","कभी नहीं","केवल रात में"],0],
-
-["आभासी प्रतिबिंब को पर्दे पर प्राप्त किया जा सकता है?",
-["हाँ","नहीं","हमेशा","केवल दिन में"],1],
-
-["गोलीय दर्पण का मध्य बिंदु कहलाता है?",
-["फोकस","ध्रुव","वक्रता केंद्र","अक्ष"],1],
-
-["गोलीय दर्पण के केंद्र को क्या कहते हैं?",
-["ध्रुव","फोकस","वक्रता केंद्र","मुख्य अक्ष"],2],
-
-["ध्रुव और वक्रता केंद्र को मिलाने वाली रेखा कहलाती है?",
-["फोकस","मुख्य अक्ष","अभिलंब","व्यास"],1],
-
-["दर्पण में प्रकाश की किरण का वापस लौटना कहलाता है?",
-["अपवर्तन","परावर्तन","विवर्तन","व्यतिकरण"],1],
-
-["अवतल दर्पण का उपयोग कहाँ किया जाता है?",
-["वाहन के पीछे देखने में","सौर कुकर में","सड़क के मोड़ पर","दुकान में"],1],
-
-["उत्तल दर्पण का प्रतिबिंब वस्तु की तुलना में कैसा होता है?",
-["बड़ा","छोटा","समान","उल्टा"],1],
-
-["यदि आपतन कोण 30° है तो परावर्तन कोण होगा?",
-["60°","15°","30°","90°"],2],
-
-["यदि परावर्तन कोण 45° है तो आपतन कोण होगा?",
-["30°","45°","60°","90°"],1],
-
-["अभिलंब किसके लंबवत होता है?",
-["दर्पण के पृष्ठ","प्रकाश किरण","मुख्य अक्ष","फोकस"],0],
-
-["समतल दर्पण में प्रतिबिंब की प्रकृति होती है?",
-["वास्तविक","आभासी","उल्टी","छोटी"],1],
-
-["अवतल दर्पण का उपयोग किसमें होता है?",
-["वाहन के साइड मिरर","शेविंग मिरर","सड़क के मोड़","सुरक्षा दर्पण"],1],
-
-["उत्तल दर्पण का फोकस कहाँ होता है?",
-["दर्पण के सामने","दर्पण के पीछे","ध्रुव पर","अनंत पर"],1],
-
-["यदि वस्तु की दूरी 20 cm है तो समतल दर्पण में प्रतिबिंब की दूरी कितनी होगी?",
-["10 cm","20 cm","40 cm","5 cm"],1],
-
-["परावर्तन के नियम किस पर लागू होते हैं?",
-["केवल समतल दर्पण","केवल गोलीय दर्पण","सभी परावर्तक पृष्ठ","केवल पानी"],2],
-
-["परावर्तन में आपतित किरण और परावर्तित किरण के बीच कोण कितना होगा यदि आपतन कोण 40° है?",
-["40°","80°","20°","90°"],1]
-
+["प्रकाश का परावर्तन किसे कहते हैं?",["प्रकाश का मुड़ना","प्रकाश का सतह से टकराकर वापस लौटना","प्रकाश का अवशोषण","प्रकाश का अपवर्तन"],1],
+["परावर्तन के कितने नियम होते हैं?",["एक","दो","तीन","चार"],1],
+["आपतन कोण किसके बीच मापा जाता है?",["किरण और सतह","आपतित किरण और अभिलंब","परावर्तित किरण और सतह","दोनों किरणों के बीच"],1],
+["परावर्तन कोण किसके बीच मापा जाता है?",["परावर्तित किरण और अभिलंब","किरण और सतह","आपतित किरण और सतह","सतह और अभिलंब"],0],
+["परावर्तन के प्रथम नियम के अनुसार क्या सत्य है?",["आपतन कोण परावर्तन कोण के बराबर होता है","आपतन कोण बड़ा होता है","परावर्तन कोण शून्य होता है","दोनों कोणों का योग 90° होता है"],0],
+["परावर्तन के दूसरे नियम के अनुसार आपतित किरण, परावर्तित किरण और अभिलंब होते हैं:",["अलग-अलग तल में","एक ही तल में","समानांतर","लंबवत"],1],
+["समतल दर्पण में बना प्रतिबिंब कैसा होता है?",["वास्तविक","आभासी और सीधा","उल्टा","छोटा"],1],
+["समतल दर्पण में प्रतिबिंब का आकार होता है:",["वस्तु से बड़ा","वस्तु से छोटा","वस्तु के बराबर","शून्य"],2],
+["समतल दर्पण में प्रतिबिंब दर्पण के पीछे कितनी दूरी पर बनता है?",["वस्तु की दूरी के बराबर","दोगुनी दूरी","आधी दूरी","शून्य दूरी"],0],
+["समतल दर्पण में पार्श्व परिवर्तन होता है:",["ऊपर-नीचे","दाएँ-बाएँ","आगे-पीछे","कोई नहीं"],1],
+["गोलीय दर्पण कितने प्रकार के होते हैं?",["एक","दो","तीन","चार"],1],
+["अवतल दर्पण का परावर्तक पृष्ठ होता है:",["बाहर की ओर उभरा","अंदर की ओर धँसा","समतल","पारदर्शी"],1],
+["उत्तल दर्पण का परावर्तक पृष्ठ होता है:",["अंदर की ओर धँसा","बाहर की ओर उभरा","समतल","खुरदरा"],1],
+["वाहनों में पीछे का दृश्य देखने के लिए कौन-सा दर्पण उपयोग होता है?",["अवतल","उत्तल","समतल","कोई नहीं"],1],
+["दाढ़ी बनाने के दर्पण के रूप में सामान्यतः किसका उपयोग होता है?",["उत्तल दर्पण","अवतल दर्पण","समतल दर्पण","कोई नहीं"],1],
+["अवतल दर्पण को किस नाम से भी जाना जाता है?",["अपसारी दर्पण","अभिसारी दर्पण","समतल दर्पण","पारदर्शी दर्पण"],1],
+["उत्तल दर्पण को किस नाम से भी जाना जाता है?",["अभिसारी दर्पण","अपसारी दर्पण","समतल दर्पण","अवतल दर्पण"],1],
+["गोलीय दर्पण का ध्रुव किसे कहते हैं?",["दर्पण का मध्य बिंदु","वक्रता केंद्र","फोकस","किनारा"],0],
+["वक्रता केंद्र किसे कहते हैं?",["दर्पण का मध्य","गोले का केंद्र जिसका दर्पण भाग है","फोकस","ध्रुव"],1],
+["वक्रता त्रिज्या किसे कहते हैं?",["ध्रुव से फोकस की दूरी","ध्रुव से वक्रता केंद्र की दूरी","फोकस से वस्तु की दूरी","दर्पण की मोटाई"],1],
+["मुख्य फोकस किसे कहते हैं?",["जहाँ समानांतर किरणें परावर्तन के बाद मिलती हैं या मिलती प्रतीत होती हैं","दर्पण का किनारा","वस्तु का स्थान","ध्रुव"],0],
+["फोकस दूरी और वक्रता त्रिज्या में संबंध है:",["f=R","f=R/2","f=2R","f=R/4"],1],
+["अवतल दर्पण का फोकस होता है:",["वास्तविक","आभासी","अनंत पर","ध्रुव पर"],0],
+["उत्तल दर्पण का फोकस होता है:",["वास्तविक","आभासी","दर्पण के सामने","ध्रुव पर"],1],
+["अवतल दर्पण में वस्तु अनंत पर हो तो प्रतिबिंब बनता है:",["फोकस पर","वक्रता केंद्र पर","ध्रुव पर","अनंत पर"],0],
+["अवतल दर्पण में वस्तु वक्रता केंद्र पर हो तो प्रतिबिंब बनता है:",["फोकस पर","वक्रता केंद्र पर","अनंत पर","दर्पण के पीछे"],1],
+["अवतल दर्पण में वस्तु फोकस पर हो तो प्रतिबिंब बनता है:",["ध्रुव पर","अनंत पर","वक्रता केंद्र पर","फोकस पर"],1],
+["अवतल दर्पण में वस्तु फोकस और ध्रुव के बीच हो तो प्रतिबिंब होता है:",["वास्तविक और उल्टा","आभासी और सीधा","छोटा और उल्टा","नहीं बनता"],1],
+["उत्तल दर्पण हमेशा कैसा प्रतिबिंब बनाता है?",["वास्तविक और उल्टा","आभासी, सीधा और छोटा","वास्तविक और बड़ा","उल्टा और बड़ा"],1],
+["दर्पण सूत्र है:",["1/f=1/v+1/u","f=u+v","1/f=u+v","f=uv"],0],
+["दर्पण में आवर्धन का सूत्र है:",["m=v/u","m=-v/u","m=u/v","m=f/u"],1],
+["यदि आवर्धन धनात्मक हो तो प्रतिबिंब सामान्यतः होता है:",["उल्टा","सीधा","हमेशा वास्तविक","अनंत"],1],
+["यदि आवर्धन ऋणात्मक हो तो प्रतिबिंब होता है:",["सीधा","उल्टा","आभासी","शून्य"],1],
+["वास्तविक प्रतिबिंब को पर्दे पर:",["प्राप्त किया जा सकता है","प्राप्त नहीं किया जा सकता","हमेशा बड़ा होता है","हमेशा सीधा होता है"],0],
+["आभासी प्रतिबिंब को पर्दे पर:",["प्राप्त किया जा सकता है","प्राप्त नहीं किया जा सकता","हमेशा उल्टा होता है","हमेशा वास्तविक होता है"],1],
+["परावर्तन में प्रकाश की चाल:",["बदल जाती है","नहीं बदलती","शून्य हो जाती है","दोगुनी हो जाती है"],1],
+["आपतन कोण 30° हो तो परावर्तन कोण कितना होगा?",["15°","30°","60°","90°"],1],
+["आपतित किरण अभिलंब के अनुदिश हो तो आपतन कोण होगा:",["90°","45°","0°","180°"],2],
+["समतल दर्पण की फोकस दूरी होती है:",["शून्य","अनंत","एक मीटर","दो मीटर"],1],
+["समतल दर्पण का आवर्धन होता है:",["-1","0","+1","+2"],2],
+["किस दर्पण का दृष्टि क्षेत्र अधिक होता है?",["अवतल","उत्तल","समतल","सभी समान"],1],
+["टॉर्च और वाहन की हेडलाइट में किस दर्पण का उपयोग होता है?",["उत्तल","अवतल","समतल","कोई नहीं"],1],
+["सौर भट्ठी में किस दर्पण का उपयोग किया जा सकता है?",["उत्तल","अवतल","समतल","कोई नहीं"],1],
+["अवतल दर्पण में वस्तु वक्रता केंद्र से बाहर हो तो प्रतिबिंब बनता है:",["फोकस और वक्रता केंद्र के बीच","वक्रता केंद्र से बाहर","दर्पण के पीछे","अनंत पर"],0],
+["अवतल दर्पण में वस्तु फोकस और वक्रता केंद्र के बीच हो तो प्रतिबिंब बनता है:",["फोकस और ध्रुव के बीच","वक्रता केंद्र से बाहर","दर्पण के पीछे","फोकस पर"],1],
+["उत्तल दर्पण में प्रतिबिंब कहाँ बनता है?",["दर्पण के सामने","दर्पण के पीछे ध्रुव और फोकस के बीच","अनंत पर","वक्रता केंद्र पर"],1],
+["गोलीय दर्पण के लिए ध्रुव और मुख्य अक्ष के बीच संबंध है:",["मुख्य अक्ष ध्रुव से होकर गुजरती है","मुख्य अक्ष ध्रुव से नहीं गुजरती","दोनों समानांतर नहीं","कोई संबंध नहीं"],0],
+["परावर्तक सतह की चमक बढ़ाने के लिए क्या किया जाता है?",["सतह को खुरदरा करना","सतह को चिकना और चमकीला करना","सतह को काला करना","सतह को पारदर्शी करना"],1],
+["प्रकाश का परावर्तन किस प्रकार की सतह पर नियमित होता है?",["खुरदरी सतह","चिकनी सतह","कपड़े पर","दीवार पर"],1],
+["खुरदरी सतह से होने वाला परावर्तन कहलाता है:",["नियमित परावर्तन","विसरित परावर्तन","पूर्ण आंतरिक परावर्तन","अपवर्तन"],1]
 ];
 
-let current=0;
-let timer=null;
-let timeLeft=10;
-let answers=new Array(questions.length).fill(null);
-let locked=false;
+let current = 0;
+let answers = Array(questions.length).fill(null);
+let timeLeft = 10;
+let timer = null;
+let studentName = "";
 
 function startQuiz(){
-
- document.getElementById("welcome").classList.add("hidden");
- document.getElementById("quiz").classList.remove("hidden");
-
- current=0;
- showQuestion();
+  studentName = document.getElementById("studentName").value.trim();
+  if(!studentName){
+    alert("कृपया अपना नाम लिखें।");
+    document.getElementById("studentName").focus();
+    return;
+  }
+  document.getElementById("start").style.display="none";
+  document.getElementById("quiz").style.display="block";
+  showQuestion();
 }
 
+document.getElementById("studentName").addEventListener("keydown",function(e){
+  if(e.key==="Enter") startQuiz();
+});
+
 function showQuestion(){
-
- if(current>=questions.length){
-  finishQuiz();
-  return;
- }
-
- locked=false;
- timeLeft=10;
-
- document.getElementById("questionNumber").textContent=
- "प्रश्न "+(current+1)+" / "+questions.length;
-
- document.getElementById("time").textContent=timeLeft;
-
- document.getElementById("progressBar").style.width=
- (current/questions.length*100)+"%";
-
- document.getElementById("questionText").textContent=
- questions[current][0];
-
- document.getElementById("message").textContent=
- "एक सही विकल्प चुनें। उत्तर चुनने के बाद अगला प्रश्न खुलेगा।";
-
- const box=document.getElementById("options");
- box.innerHTML="";
-
- questions[current][1].forEach((option,index)=>{
-
-  const btn=document.createElement("button");
-
-  btn.className="option";
-  btn.textContent=
-  String.fromCharCode(65+index)+". "+option;
-
-  btn.onclick=()=>selectAnswer(index);
-
-  box.appendChild(btn);
- });
-
- clearInterval(timer);
-
- timer=setInterval(()=>{
-
-  timeLeft--;
-
-  document.getElementById("time").textContent=timeLeft;
-
-  if(timeLeft<=0){
-
-   clearInterval(timer);
-
-   if(!locked){
-
-    answers[current]=null;
-    locked=true;
-
-    document.getElementById("message").textContent=
-    "समय समाप्त! अगला प्रश्न खुल रहा है।";
-
-    setTimeout(nextQuestion,700);
-   }
+  clearInterval(timer);
+  if(current >= questions.length){
+    finishQuiz();
+    return;
   }
 
- },1000);
+  timeLeft=10;
+  document.getElementById("number").textContent=
+    "प्रश्न "+(current+1)+"/"+questions.length;
+  document.getElementById("time").textContent=timeLeft;
+  document.getElementById("bar").style.width=
+    (current/questions.length*100)+"%";
+
+  const q=questions[current];
+  document.getElementById("question").textContent=q[0];
+
+  const box=document.getElementById("options");
+  box.innerHTML="";
+
+  q[1].forEach((option,index)=>{
+    const btn=document.createElement("button");
+    btn.className="option";
+    btn.textContent=String.fromCharCode(65+index)+". "+option;
+    btn.onclick=()=>selectAnswer(index);
+    box.appendChild(btn);
+  });
+
+  timer=setInterval(()=>{
+    timeLeft--;
+    document.getElementById("time").textContent=timeLeft;
+    if(timeLeft<=0){
+      clearInterval(timer);
+      nextQuestion();
+    }
+  },1000);
 }
 
 function selectAnswer(index){
+  if(answers[current]!==null) return;
+  answers[current]=index;
+  clearInterval(timer);
 
- if(locked)return;
+  document.querySelectorAll(".option").forEach((btn,i)=>{
+    btn.disabled=true;
+    if(i===index) btn.classList.add("selected");
+  });
 
- locked=true;
- clearInterval(timer);
-
- answers[current]=index;
-
- const correct=questions[current][2];
- const buttons=document.querySelectorAll(".option");
-
- buttons.forEach((btn,i)=>{
-
-  btn.disabled=true;
-
-  if(i===correct){
-   btn.classList.add("correct");
-  }
-
-  if(i===index && index!==correct){
-   btn.classList.add("wrong");
-  }
-
- });
-
- document.getElementById("message").textContent=
- index===correct?"✓ सही उत्तर!":"✗ गलत उत्तर!";
-
- setTimeout(nextQuestion,850);
+  setTimeout(nextQuestion,350);
 }
 
 function nextQuestion(){
-
- current++;
- showQuestion();
+  clearInterval(timer);
+  current++;
+  showQuestion();
 }
 
 function finishQuiz(){
+  clearInterval(timer);
+  document.getElementById("quiz").style.display="none";
+  document.getElementById("result").style.display="block";
 
- clearInterval(timer);
+  let correct=0,wrong=0,skipped=0;
+  questions.forEach((q,i)=>{
+    if(answers[i]===null) skipped++;
+    else if(answers[i]===q[2]) correct++;
+    else wrong++;
+  });
 
- document.getElementById("quiz").classList.add("hidden");
- document.getElementById("result").classList.remove("hidden");
+  const percent=Math.round(correct/questions.length*100);
 
- let correct=0;
- let wrong=0;
- let skipped=0;
+  document.getElementById("studentResult").textContent=
+    "विद्यार्थी: "+studentName;
 
- answers.forEach((a,i)=>{
+  let message="अच्छा प्रयास!";
+  if(percent>=90) message="बहुत शानदार! उत्कृष्ट प्रदर्शन!";
+  else if(percent>=75) message="बहुत अच्छा प्रदर्शन!";
+  else if(percent>=50) message="अच्छा प्रयास, अभ्यास जारी रखें।";
+  else message="और अभ्यास की आवश्यकता है।";
 
-  if(a===null){
-   skipped++;
-  }
-  else if(a===questions[i][2]){
-   correct++;
-  }
-  else{
-   wrong++;
-  }
+  document.getElementById("summary").innerHTML=
+    "<b>कुल अंक:</b> "+correct+" / 50<br>"+
+    "<b>सही उत्तर:</b> "+correct+"<br>"+
+    "<b>गलत उत्तर:</b> "+wrong+"<br>"+
+    "<b>छोड़े गए प्रश्न:</b> "+skipped+"<br>"+
+    "<b>प्रतिशत:</b> "+percent+"%<br><b>"+message+"</b>";
 
- });
+  const review=document.getElementById("review");
+  review.innerHTML="";
+  questions.forEach((q,i)=>{
+    const div=document.createElement("div");
+    div.className="review";
+    const selected=answers[i];
+    const status=selected===null
+      ? '<span class="wrong">उत्तर नहीं दिया</span>'
+      : selected===q[2]
+      ? '<span class="correct">सही उत्तर</span>'
+      : '<span class="wrong">गलत उत्तर</span>';
 
- let percent=Math.round(correct/questions.length*100);
+    const yourAnswer=selected===null
+      ? "उत्तर नहीं दिया"
+      : q[1][selected];
 
- document.getElementById("score").textContent=correct;
- document.getElementById("correct").textContent=correct;
- document.getElementById("wrong").textContent=wrong;
- document.getElementById("skipped").textContent=skipped;
- document.getElementById("percentage").textContent=percent;
+    div.innerHTML=
+      "<b>"+(i+1)+". "+q[0]+"</b><br>"+
+      "आपका उत्तर: "+yourAnswer+"<br>"+
+      "सही उत्तर: <span class='correct'>"+q[1][q[2]]+"</span><br>"+
+      status;
+    review.appendChild(div);
+  });
 
- let feedback="";
+  const resultData={
+    name:studentName,
+    score:correct,
+    correct:correct,
+    wrong:wrong,
+    skipped:skipped,
+    percentage:percent,
+    answers:questions.map((q,i)=>({
+      question:q[0],
+      selectedAnswer:answers[i]===null
+        ?"उत्तर नहीं दिया":q[1][answers[i]],
+      correctAnswer:q[1][q[2]],
+      isCorrect:answers[i]===q[2]
+    }))
+  };
 
- if(percent>=90){
-  feedback="🌟 शानदार प्रदर्शन! बहुत खूब!";
- }
- else if(percent>=70){
-  feedback="👏 बहुत अच्छा प्रयास!";
- }
- else if(percent>=50){
-  feedback="👍 अच्छा प्रयास, अभ्यास जारी रखें।";
- }
- else{
-  feedback="📚 और अभ्यास करें, आप बेहतर कर सकते हैं!";
- }
-
- document.getElementById("feedback").textContent=feedback;
+  // परिणाम Google Sheet में भेजें
+  fetch(GOOGLE_SHEET_URL,{
+    method:"POST",
+    mode:"no-cors",
+    headers:{"Content-Type":"text/plain;charset=utf-8"},
+    body:JSON.stringify(resultData)
+  })
+  .then(()=>{
+    document.getElementById("saveStatus").textContent=
+      "रिजल्ट भेज दिया गया है। शिक्षक Google Sheet में जाँच सकते हैं।";
+  })
+  .catch(()=>{
+    document.getElementById("saveStatus").textContent=
+      "रिजल्ट भेजने में समस्या हुई। इंटरनेट और Sheet सेटिंग जाँचें।";
+  });
 }
-
-function showReview(){
-
- document.getElementById("result").classList.add("hidden");
- document.getElementById("review").classList.remove("hidden");
-
- const list=document.getElementById("reviewList");
- list.innerHTML="";
-
- questions.forEach((q,i)=>{
-
-  const correct=q[2];
-  const selected=answers[i];
-
-  const div=document.createElement("div");
-  div.className="review-item";
-
-  const title=document.createElement("b");
-  title.textContent="प्रश्न "+(i+1)+": "+q[0];
-
-  const yourAnswer=document.createElement("div");
-  yourAnswer.textContent=
-  "आपका उत्तर: "+
-  (selected===null?"समय समाप्त / उत्तर नहीं दिया":q[1][selected]);
-
-  yourAnswer.className=
-  selected===correct?"good":"bad";
-
-  const rightAnswer=document.createElement("div");
-  rightAnswer.textContent=
-  "सही उत्तर: "+q[1][correct];
-
-  rightAnswer.className="good";
-
-  div.appendChild(title);
-  div.appendChild(yourAnswer);
-  div.appendChild(rightAnswer);
-
-  list.appendChild(div);
-
- });
-
-}
-
 </script>
-
 </body>
 </html>
